@@ -7,6 +7,7 @@ import sttp.model.StatusCode
 import util.WiremockResource
 import zio.*
 import zio.test.*
+import domain.OpaqueTypes.*
 
 object APIHttpRequesterSpec extends ZIOSpecDefault {
 
@@ -38,7 +39,8 @@ object APIHttpRequesterSpec extends ZIOSpecDefault {
           )).provide(
             Scope.default,
             APIHttpRequester.live,
-            util.SttpLoggingBackend.armeriaBackend
+            util.SttpLoggingBackend.armeriaBackend,
+            ZLayer.succeed(SchedulerInterpreter.createSchedule[String, String](0.toRecurs, 0.seconds.toExponentialDuration))
           )
         }
       }

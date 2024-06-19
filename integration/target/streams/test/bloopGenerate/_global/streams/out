@@ -1,4 +1,0 @@
-[debug] [integration-test] Classpath dependencies List(root)
-[debug] [integration-test] Dependencies from configurations List(integration)
-[debug] Bloop wrote the configuration of project 'integration-test' to '/Users/davidpratt/workspace/Scala3/zio-sttp-wiremock-example-scala3/.bloop/integration-test.json'
-[success] Generated .bloop/integration-test.json
