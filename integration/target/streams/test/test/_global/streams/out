@@ -1,4 +1,4 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(http.client.APIHttpRequesterSpec, zio.test.sbt.ZioSpecFingerprint$@495f907d, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(http.client.APIHttpRequesterSpec, zio.test.sbt.ZioSpecFingerprint$@23cee2d0, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0mCompleted tests[0m
 [0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	http.client.APIHttpRequesterSpec[0m

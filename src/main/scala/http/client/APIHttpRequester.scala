@@ -9,10 +9,11 @@ trait APIHttpRequesterAlg {
   def request(requestEnumerations: RequestEnumerations): ZIO[SttpBackend[Task, ZioStreams], Serializable, Int]
 }
 
-final case class APIHttpRequester() extends APIHttpRequesterAlg {
+final case class APIHttpRequester(
+                                   private val backend: SttpBackend[Task, ZioStreams]
+                                 ) extends APIHttpRequesterAlg {
 
   def request(requestEnumerations: RequestEnumerations): ZIO[SttpBackend[Task, ZioStreams], Serializable, Int] = for {
-    backend <- ZIO.service[SttpBackend[Task, ZioStreams]]
     request <- basicRequest
       .get(requestEnumerations.uri)
       .send(backend)
@@ -23,5 +24,7 @@ final case class APIHttpRequester() extends APIHttpRequesterAlg {
 }
 
 object APIHttpRequester {
-  val live: ZLayer[Any, Nothing, APIHttpRequesterAlg] = zio.ZLayer.fromFunction(() => APIHttpRequester())
+  val live: ZLayer[SttpBackend[Task, ZioStreams], Nothing, APIHttpRequester] = zio.ZLayer.fromFunction(
+    (backend: SttpBackend[Task, ZioStreams]) => APIHttpRequester(backend)
+  )
 }
